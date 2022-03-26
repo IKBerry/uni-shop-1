@@ -16,9 +16,18 @@ $http.beforeRequest = function (options) {
     title: '数据加载中'
   })
 }
-// 请求完成之后做一些事情
+// 响应拦截器
 $http.afterRequest = function () {
   uni.hideLoading()
+}
+
+// 封装弹框的方法
+uni.$showMsg = function (title = '数据加载失败！', duration = 1500) {
+  uni.showToast({
+    title,
+    duration,
+    icon: 'none',
+  })
 }
 
 Vue.config.productionTip = false
